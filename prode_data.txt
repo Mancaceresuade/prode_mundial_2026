@@ -1,30 +1,81 @@
-PTD|1|OCTAVOS|TBD|TBD|
-PTD|2|OCTAVOS|TBD|TBD|
-PTD|3|OCTAVOS|TBD|TBD|
-PTD|4|OCTAVOS|TBD|TBD|
-PTD|5|OCTAVOS|TBD|TBD|
-PTD|6|OCTAVOS|TBD|TBD|
-PTD|7|OCTAVOS|TBD|TBD|
-PTD|8|OCTAVOS|TBD|TBD|
-PTD|9|OCTAVOS|TBD|TBD|
-PTD|10|OCTAVOS|TBD|TBD|
-PTD|11|OCTAVOS|TBD|TBD|
-PTD|12|OCTAVOS|TBD|TBD|
-PTD|13|OCTAVOS|TBD|TBD|
-PTD|14|OCTAVOS|TBD|TBD|
-PTD|15|OCTAVOS|TBD|TBD|
-PTD|16|OCTAVOS|TBD|TBD|
-PTD|17|CUARTOS|TBD|TBD|
-PTD|18|CUARTOS|TBD|TBD|
-PTD|19|CUARTOS|TBD|TBD|
-PTD|20|CUARTOS|TBD|TBD|
-PTD|21|CUARTOS|TBD|TBD|
-PTD|22|CUARTOS|TBD|TBD|
-PTD|23|CUARTOS|TBD|TBD|
-PTD|24|CUARTOS|TBD|TBD|
-PTD|25|SEMIS|TBD|TBD|
-PTD|26|SEMIS|TBD|TBD|
-PTD|27|SEMIS|TBD|TBD|
-PTD|28|SEMIS|TBD|TBD|
-PTD|29|TERCER_PUESTO|TBD|TBD|
-PTD|30|FINAL|TBD|TBD|
+EST|Juan
+PG|Juan|A|Czechia|South Korea
+PG|Juan|B|Canada|Qatar
+PG|Juan|C|Scotland|Morocco
+PG|Juan|D|Paraguay|USA
+PG|Juan|E|Ecuador|Curazao
+PG|Juan|F|Japan|Netherlands
+PG|Juan|G|New Zealand|Egypt
+PG|Juan|H|Cape Verde|Uruguay
+PG|Juan|I|Iraq|Senegal
+PG|Juan|J|Austria|Argentina
+PG|Juan|K|Uzbekistan|Colombia
+PG|Juan|L|Ghana|Croatia
+EST|Raul
+PG|Raul|A|Czechia|South Korea
+PG|Raul|B|Switzerland|Bosnia-Herzegovina
+PG|Raul|C|Scotland|Haiti
+PG|Raul|D|Australia|USA
+PG|Raul|E|Ecuador|Germany
+PG|Raul|F|Netherlands|Sweden
+PG|Raul|G|New Zealand|Iran
+PG|Raul|H|Cape Verde|Spain
+PG|Raul|I|Norway|Senegal
+PG|Raul|J|Austria|Argentina
+PG|Raul|K|Portugal|Uzbekistan
+PG|Raul|L|Ghana|Croatia
+EST|Ricardo
+PG|Ricardo|A|Mexico|South Korea
+PG|Ricardo|B|Canada|Qatar
+PG|Ricardo|C|Morocco|Brazil
+PG|Ricardo|D|Paraguay|Australia
+PG|Ricardo|E|Ivory Coast|Germany
+PG|Ricardo|F|Netherlands|Tunisia
+PG|Ricardo|G|Egypt|Belgium
+PG|Ricardo|H|Spain|Cape Verde
+PG|Ricardo|I|Iraq|France
+PG|Ricardo|J|Austria|Argentina
+PG|Ricardo|K|Portugal|Colombia
+PG|Ricardo|L|Ghana|Croatia
+RG|A|South Korea|Mexico|South Africa|Czechia
+RG|B|Switzerland|Bosnia-Herzegovina|Qatar|Canada
+RG|C|Morocco|Scotland|Haiti|Brazil
+RG|D|Paraguay|Australia|USA|Turkey
+RG|E|Ivory Coast|Germany|Curazao|Ecuador
+RG|F|Netherlands|Japan|Tunisia|Sweden
+RG|G|Egypt|Iran|New Zealand|Belgium
+RG|H|Cape Verde|Saudi Arabia|Spain|Uruguay
+RG|I|Norway|France|Iraq|Senegal
+RG|J|Argentina|Jordan|Austria|Algeria
+RG|K|DR Congo|Colombia|Uzbekistan|Portugal
+RG|L|Croatia|England|Ghana|Panama
+PTD|1|OCTAVOS|Saudi Arabia|Uruguay|EQ1
+PTD|2|OCTAVOS|Paraguay|DR Congo|EQ1
+PTD|3|OCTAVOS|Austria|Mexico|EQ1
+PTD|4|OCTAVOS|Ivory Coast|Portugal|EQ1
+PTD|5|OCTAVOS|South Korea|Germany|EQ2
+PTD|6|OCTAVOS|Turkey|Belgium|EQ1
+PTD|7|OCTAVOS|Tunisia|Scotland|EQ1
+PTD|8|OCTAVOS|Germany|Czechia|EQ1
+PTD|9|OCTAVOS|Czechia|Uruguay|EQ2
+PTD|10|OCTAVOS|Portugal|Cape Verde|EQ2
+PTD|11|OCTAVOS|Norway|Algeria|EQ1
+PTD|12|OCTAVOS|Canada|Germany|EQ2
+PTD|13|OCTAVOS|Iraq|Scotland|EQ2
+PTD|14|OCTAVOS|Croatia|England|EQ1
+PTD|15|OCTAVOS|Norway|Uruguay|EQ1
+PTD|16|OCTAVOS|Canada|Scotland|EQ2
+PTD|17|CUARTOS|Saudi Arabia|Paraguay|EQ2
+PTD|18|CUARTOS|Switzerland|England|EQ1
+PTD|19|CUARTOS|Turkey|Ivory Coast|EQ2
+PTD|20|CUARTOS|DR Congo|Switzerland|EQ1
+PTD|21|CUARTOS|Colombia|Jordan|EQ1
+PTD|22|CUARTOS|Panama|Switzerland|EQ1
+PTD|23|CUARTOS|Canada|Germany|EQ1
+PTD|24|CUARTOS|Canada|Paraguay|EQ2
+PTD|25|SEMIS|South Africa|Canada|EQ2
+PTD|26|SEMIS|Turkey|France|EQ1
+PTD|27|SEMIS|Czechia|Bosnia-Herzegovina|EQ2
+PTD|28|SEMIS|Scotland|Ivory Coast|EQ1
+PTD|29|TERCER_PUESTO|France|Germany|EQ2
+PTD|30|FINAL|Canada|South Korea|EQ2

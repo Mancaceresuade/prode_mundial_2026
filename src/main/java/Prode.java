@@ -123,7 +123,15 @@ public class Prode {
         private String nj(Nodo<T> n) {
             if (n == null) return "null";
             StringBuilder s = new StringBuilder("{\"name\":\"").append(esc(n.dato.toString())).append("\"")
-                    .append(",\"h\":").append(n.h).append(",\"fb\":").append(fb(n));
+                    .append(",\"h\":").append(n.h);
+            if (n.dato instanceof PK pk) s.append(",\"pts\":").append(pk.p);
+            else {
+                s.append(",\"fb\":").append(fb(n));
+                if (n.dato instanceof String nombre) {
+                    Estudiante e = estudiantes.get(nombre);
+                    if (e != null) s.append(",\"pts\":").append(e.puntaje);
+                }
+            }
             List<String> ch = new ArrayList<>();
             if (n.izq != null) ch.add(nj(n.izq));
             if (n.der != null) ch.add(nj(n.der));
@@ -695,8 +703,11 @@ body{background:#0d1117;color:#e6edf3;font-family:'Segoe UI',sans-serif}
         <div class="col-lg-7">
           <div class="card">
             <div class="card-header fw-bold">&#127795; AVL de Puntajes
-              <small class="text-muted fw-normal ms-2">clave=puntos, valor=jugadores</small></div>
+              <small class="text-muted fw-normal ms-2">clave=puntos, valor=jugadores &nbsp;|&nbsp; <code>pts</code> = puntaje</small></div>
             <div class="card-body tree-wrap" id="avlPtsWrap"></div>
+            <div class="card-footer border-secondary py-2 small text-muted">
+              &#128992; Nodo resaltado = mayor puntaje &nbsp; <code>h</code> = altura del subárbol
+            </div>
           </div>
         </div>
       </div>
@@ -722,7 +733,7 @@ body{background:#0d1117;color:#e6edf3;font-family:'Segoe UI',sans-serif}
             &#128308; nodo con |fb|&gt;1 &nbsp;
             &#128309; BST normal &nbsp;
             &#128992; AVL balanceado &nbsp;
-            <code>fb</code> = factor de balance &nbsp; <code>h</code> = altura
+            <code>fb</code> = factor de balance &nbsp; <code>pts</code> = puntaje &nbsp; <code>h</code> = altura
           </div>
         </div>
       </div>
@@ -1011,12 +1022,12 @@ async function loadTrees() {
   document.getElementById('hAVL').textContent = d.alturaAVL;
   document.getElementById('bstBadge').textContent = d.bst ? `h=${d.alturaBST}` : 'vacío';
   document.getElementById('avlBadge').textContent = d.avl ? `h=${d.alturaAVL}` : 'vacío';
-  draw('bstWrap', d.bst, '#58a6ff', false);
-  draw('avlWrap', d.avl, '#f0883e', true);
-  draw('avlPtsWrap', d.avlPuntajes, '#3fb950', true);
+  draw('bstWrap', d.bst, '#58a6ff', 'bst');
+  draw('avlWrap', d.avl, '#f0883e', 'avl');
+  draw('avlPtsWrap', d.avlPuntajes, '#3fb950', 'puntajes');
 }
 
-function draw(id, data, color, isAvl) {
+function draw(id, data, color, mode) {
   const el = document.getElementById(id);
   el.innerHTML = '';
   if (!data || data === 'null' || typeof data !== 'object') {
@@ -1028,23 +1039,38 @@ function draw(id, data, color, isAvl) {
   const H = Math.max(depth * 110 + 80, 280);
   const tree = d3.tree().size([W - 40, H - 60]);
   tree(root);
+  const nodes = root.descendants();
+  const maxPts = mode === 'puntajes'
+    ? Math.max(0, ...nodes.map(d => d.data.pts ?? 0)) : 0;
   const svg = d3.select('#'+id).append('svg').attr('width', W).attr('height', H);
   const g = svg.append('g').attr('transform','translate(20,50)');
   g.selectAll('.lk').data(root.links()).enter().append('path')
     .attr('fill','none').attr('stroke','#444').attr('stroke-width',1.5)
     .attr('d', d3.linkVertical().x(d=>d.x).y(d=>d.y));
-  const node = g.selectAll('.nd').data(root.descendants()).enter().append('g')
+  const node = g.selectAll('.nd').data(nodes).enter().append('g')
     .attr('transform', d=>`translate(${d.x},${d.y})`);
   node.append('circle').attr('r',22)
-    .attr('fill', d => isAvl && d.data.fb !== undefined && Math.abs(d.data.fb)>1 ? '#da3633' : color)
+    .attr('fill', d => {
+      if (mode === 'avl' && d.data.fb !== undefined && Math.abs(d.data.fb) > 1) return '#da3633';
+      if (mode === 'puntajes' && maxPts > 0 && (d.data.pts ?? 0) === maxPts) return '#f0883e';
+      return color;
+    })
     .attr('stroke','#0d1117').attr('stroke-width',2);
   node.append('text').attr('dy','.35em').attr('text-anchor','middle')
     .attr('fill','#fff').attr('font-size','10px').attr('font-weight','600')
     .text(d => { const n = d.data.name||''; return n.length>11 ? n.slice(0,10)+'…' : n; });
-  if (isAvl) {
+  if (mode === 'avl') {
     node.append('text').attr('dy','-2.1em').attr('text-anchor','middle')
       .attr('fill','#8b949e').attr('font-size','9px')
-      .text(d => d.data.fb !== undefined ? `fb:${d.data.fb} h:${d.data.h}` : '');
+      .text(d => {
+        if (d.data.fb === undefined) return '';
+        let s = d.data.pts !== undefined ? `pts:${d.data.pts} ` : '';
+        return s + `fb:${d.data.fb} h:${d.data.h}`;
+      });
+  } else if (mode === 'puntajes') {
+    node.append('text').attr('dy','-2.1em').attr('text-anchor','middle')
+      .attr('fill','#8b949e').attr('font-size','9px')
+      .text(d => d.data.pts !== undefined ? `pts:${d.data.pts} h:${d.data.h}` : '');
   }
 }
 
